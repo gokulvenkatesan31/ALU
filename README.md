@@ -35,3 +35,94 @@
 | 1110  |   ALU_Out = 1 if A>B else 0;
 ----------------------------------------------------------------------
 | 1111  |   ALU_Out = 1 if A=B else 0;
+
+# Program
+```
+module alu (
+
+input[7:0]A,B,
+
+input[3:0]ALU_SEL,
+
+output reg[7:0]Result
+
+);
+
+always @ (*)
+
+begin  
+
+case(ALU_SEL)
+
+4'b0000:
+
+Result=A+B;
+
+4'b0001:
+
+Result=A-B;
+
+4'b0010:
+
+Result=A*B;
+
+4'b0011:
+
+Result=A/B;
+
+4'b0100:
+
+Result=A>>1;
+
+4'b0101:
+
+Result=A<<1;
+
+4'b0110:
+
+Result={A[6:0],A[7]};
+
+4'b0111:
+
+Result={A[0],A[7:1]};
+
+4'b1000:
+
+Result=A&B;
+
+4'b1001:
+
+Result=A|B;
+
+4'b1010:
+
+Result=A^B;
+
+4'b1011:
+
+Result=~(A|B);
+
+4'b1100:
+
+Result=~(A&B);
+
+4'b1101:
+
+Result=~(A^B);
+
+4'b1110:
+
+Result=(A>B)?8'd1:8'd0;
+
+4'b1111:
+
+Result=(A==B)?8'd1:8'd0;
+
+default: Result=A+B;
+
+endcase
+
+end
+```
+# Output
+![326365482-e34787a5-6d8a-4bed-81fc-cb5a11ad2ee1](https://github.com/gokulvenkatesan31/ALU/assets/123715763/0edecba9-1299-4c02-986d-b25cf30bb013)
